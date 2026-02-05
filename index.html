@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ruth & Dr. Tinsae | Our Magical Wedding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --midnight: #000000;
+            --card-dark: #0a0a0a;
+            --gold: #d4af37;
+            --burgundy: #800020;
+            --silver: #d1d1d1;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--midnight);
+            color: var(--silver);
+            scroll-behavior: smooth;
+        }
+
+        /* --- Hero Section --- */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), 
+                        url('https://picsum.photos/seed/ruthtinsae/1920/1080'); /* Placeholder image */
+            background-size: cover;
+            background-position: center 30%;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            color: var(--gold);
+            margin: 0;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 1);
+            animation: fadeInDown 2s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            color: white;
+            text-shadow: 1px 1px 10px rgba(0,0,0,1);
+            opacity: 0;
+            animation: fadeInUp 2s ease 1s forwards;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Thank You Message --- */
+        .thank-you-box {
+            padding: 100px 20px;
+            text-align: center;
+            background: var(--midnight);
+        }
+
+        .thank-you-content {
+            max-width: 800px;
+            margin: 0 auto;
+            border-left: 2px solid var(--gold);
+            padding: 20px 40px;
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* --- Timeline --- */
+        .program-section {
+            padding: 100px 20px;
+            background: var(--midnight);
+        }
+
+        .timeline-wrap {
+            position: relative;
+            max-width: 850px;
+            margin: 60px auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+            transform: translateX(-50%);
+        }
+
+        .plan-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .plan-content {
+            width: 42%;
+            background: var(--card-dark);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: 0.4s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .plan-item.left { flex-direction: row; text-align: right; }
+        .plan-item.right { flex-direction: row-reverse; text-align: left; }
+
+        .plan-item:hover .plan-content {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .plan-time {
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .heart-dot {
+            width: 40px; height: 40px;
+            background-color: var(--midnight);
+            border: 1px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+            color: var(--burgundy);
+            z-index: 2;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px var(--gold);
+        }
+
+        /* --- Event Photos Gallery --- */
+        .gallery-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #050505;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #222;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover { 
+            border-color: var(--gold); 
+            transform: scale(1.02); 
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* --- Guest Book --- */
+        .wish-section {
+            padding: 100px 20px;
+            background: var(--midnight);
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: var(--card-dark);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #222;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        input, textarea {
+            width: 100%; padding: 15px; margin: 12px 0;
+            background: #000; border: 1px solid #333;
+            color: white; border-radius: 10px; font-family: inherit;
+            box-sizing: border-box; /* Fixes padding overflow */
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .gold-btn {
+            background: var(--gold); color: black; border: none;
+            padding: 15px 40px; border-radius: 50px;
+            font-weight: 600; cursor: pointer;
+            text-transform: uppercase; transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .gold-btn:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        /* --- Final Thank You --- */
+        .final-footer {
+            padding: 120px 20px;
+            text-align: center;
+            background: linear-gradient(to top, #000, #0a0a0a);
+        }
+
+        .final-thanks {
+            font-family: 'Alex Brush', cursive;
+            font-size: 4.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        /* --- Music Player --- */
+        .music-bar {
+            position: fixed; bottom: 30px; left: 30px;
+            background: rgba(0,0,0,0.9); padding: 12px 25px;
+            border-radius: 50px; display: flex; align-items: center;
+            gap: 15px; border: 1px solid var(--gold); z-index: 1000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: opacity 0.3s;
+        }
+
+        #musicToggle {
+            background: var(--gold); border: none;
+            width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+            font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.2s;
+        }
+
+        #musicToggle:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Success Message for Form */
+        .form-success {
+            display: none;
+            color: var(--gold);
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 4rem; }
+            .timeline-line { left: 20px; }
+            .plan-item { flex-direction: row-reverse !important; text-align: left !important; padding-left: 50px; }
+            .plan-content { width: 100%; }
+            .heart-dot { left: 20px; transform: translateX(-50%); }
+            .form-container { padding: 25px; }
+            .music-bar { left: 50%; transform: translateX(-50%); bottom: 20px; width: 90%; justify-content: center;}
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Dr. Ruth & Dr. Tinsae</h1>
+        <div class="hero-subtitle">Two Hearts, One Journey, Forever Bound by Love</div>
+    </header>
+
+    <section class="thank-you-box">
+        <div class="thank-you-content">
+            <h2 style="color: var(--gold); font-family: 'Alex Brush'; font-size: 3rem;">Thank You for Coming</h2>
+            <p>"To our family and friends, your presence is the greatest gift. Thank you for traveling to celebrate our union. We are so blessed to have you in our lives."</p>
+            <p>— <b>Dr. Ruth Fiseha & Dr. Tinsae Asfaw</b></p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2 style="color: var(--gold); text-transform: uppercase; letter-spacing: 5px; font-size: 1.2rem;">Our Memories</h2>
+        <h3 style="font-family: 'Alex Brush'; font-size: 3.5rem; color: white; margin-top: 0;">Event Photos</h3>
+        <div class="gallery-grid">
+            <!-- Using Picsum for demo. Replace these with your actual local photos -->
+            <img src="https://picsum.photos/seed/wedding1/600/800" alt="Wedding Moment 1">
+            <img src="https://picsum.photos/seed/wedding2/600/800" alt="Wedding Moment 2">
+            <img src="https://picsum.photos/seed/wedding3/600/800" alt="Wedding Moment 3">
+            <img src="https://picsum.photos/seed/wedding4/600/800" alt="Wedding Moment 4">
+        </div>
+    </section>
+
+    <section class="program-section">
+        <div style="text-align: center;">
+            <h2 style="color: var(--gold); text-transform: uppercase; letter-spacing: 5px;">Wedding Plan</h2>
+            <h3 style="font-family: 'Alex Brush'; font-size: 3.5rem; margin-top: -10px; color: white;">The Timeline</h3>
+        </div>
+
+        <div class="timeline-wrap">
+            <div class="timeline-line"></div>
+            
+            <div class="plan-item left">
+                <div class="plan-content">
+                    <div class="plan-time">11:30 PM</div>
+                    <h4 class="plan-label" style="color:white; margin: 5px 0;">Grand Welcome</h4>
+                    <p class="plan-desc" style="margin:0; opacity: 0.8;">Receiving our honored guests for the celebration.</p>
+                </div>
+                <div class="heart-dot">♥</div>
+                <div class="plan-content" style="visibility:hidden"></div>
+            </div>
+
+            <div class="plan-item right">
+                <div class="plan-content" style="visibility:hidden"></div>
+                <div class="heart-dot">♥</div>
+                <div class="plan-content">
+                    <div class="plan-time">2:00 AM</div>
+                    <h4 class="plan-label" style="color:white; margin: 5px 0;">Cake & Dancing</h4>
+                    <p class="plan-desc" style="margin:0; opacity: 0.8;">Music, dancing, and the cutting of the wedding cake.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="wish-section">
+        <h2 style="color: var(--gold); font-size: 2.5rem;">Share the Magic</h2>
+        <div class="form-container">
+            <form id="wishForm">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <textarea name="wish" rows="4" placeholder="Your Wish for the Doctors..." required></textarea>
+                <button type="submit" class="gold-btn">Post Your Wish</button>
+                <div id="formSuccess" class="form-success">✓ Your wish has been sent to the stars!</div>
+            </form>
+        </div>
+    </section>
+
+    <div class="final-footer">
+        <div class="final-thanks">Thank You for Your Wishes</div>
+        <p style="letter-spacing: 4px; color: #888; text-transform: uppercase; font-size: 0.8rem;">We are honored to share our love with you</p>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-bar">
+        <button id="musicToggle">▶</button>
+        <div style="font-size: 0.8rem;">
+            <b>Abinet Agonafir</b><br>
+            <span id="musicStatus" style="opacity: 0.7; font-size: 0.75rem;">Click to play music</span>
+        </div>
+    </div>
+
+    <!-- 
+       IMPORTANT: 
+       To make the music work, add an MP3 file named "song.mp3" to the same folder 
+       OR change the src below to a direct link to an mp3 file.
+    -->
+    <audio id="bgMusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const music = document.getElementById("bgMusic");
+        const btn = document.getElementById("musicToggle");
+        const status = document.getElementById("musicStatus");
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play().then(() => {
+                    btn.innerText = "||";
+                    status.innerText = "Playing: Yewunet Menged";
+                }).catch(e => {
+                    console.log("Audio play failed (interaction needed or file missing):", e);
+                    status.innerText = "Error: Add 'song.mp3' file";
+                });
+            } else {
+                music.pause();
+                btn.innerText = "▶";
+                status.innerText = "Paused";
+            }
+        }
+
+        // Auto-play attempt after first scroll/interaction
+        function autoPlayMusic() {
+            if (music.paused) {
+                music.play().then(() => {
+                    btn.innerText = "||";
+                    status.innerText = "Playing: Yewunet Menged";
+                    document.removeEventListener('click', autoPlayMusic);
+                    document.removeEventListener('scroll', autoPlayMusic);
+                }).catch(() => {
+                    // Autoplay was prevented, wait for user to click button
+                });
+            }
+        }
+
+        // Listen for user interaction to satisfy browser policies
+        document.addEventListener('click', autoPlayMusic);
+        document.addEventListener('scroll', autoPlayMusic, { once: true });
+
+        btn.onclick = (e) => {
+            e.stopPropagation(); // Prevent triggering the global click listener
+            toggleMusic();
+        };
+
+        // Handle Wish Form Submission
+        document.getElementById('wishForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop actual page reload
+            
+            const btn = this.querySelector('button');
+            const originalText = btn.innerText;
+            const successMsg = document.getElementById('formSuccess');
+
+            btn.innerText = "Sending...";
+            
+            // Simulate network delay
+            setTimeout(() => {
+                btn.innerText = originalText;
+                successMsg.style.display = "block";
+                this.reset(); // Clear form
+
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMsg.style.display = "none";
+                }, 3000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
